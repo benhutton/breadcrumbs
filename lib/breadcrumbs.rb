@@ -33,7 +33,12 @@ module Breadcrumbs
       default_options = {:separator => "&nbsp;&raquo;&nbsp;", :tag => :li}
       options = default_options.merge(args.extract_options!)
       @breadcrumbs.map do |name, url|
-        crumb = link_to_unless_current(name, url)
+        if options[:no_link].to_s == 'last'
+          last_crumb = [name, url] == @breadcrumbs.last
+          crumb = link_to_unless(last_crumb, name, url)
+        else
+          crumb = link_to_unless_current(name, url)
+        end
         options[:tag] && content_tag(options[:tag], crumb) || crumb
       end.join("#{options[:separator]}")
     end
