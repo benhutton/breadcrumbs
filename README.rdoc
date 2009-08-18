@@ -8,13 +8,13 @@ created the plugin.
 
 == Changes
 
-Changed breadcrumb method to accept 3 options: <tt>:tag</tt>, 
-<tt>:class</tt> and <tt>:separator</tt>.
+Changed breadcrumb method to accept 4 options: <tt>:tag</tt>, 
+<tt>:class</tt>, <tt>:separator</tt>, and <tt>:no_link</tt>.
 
 * <tt>:tag</tt> - An HTML tag to wrap each breadcrumb entry with (ie. li, p, etc.).
 * <tt>:class</tt> - An HTML class to give to the tag specified in the +:wrap_with_tag+ option.
 * <tt>:separator</tt> - Acts the same as the old breadcrumb method worked.
-* <tt>:no_link</tt> - The default behavior (if this is set to nil) is to link every breadcrumb EXCEPT for the current page. If this is set to "last", every breadcrumb is linked except the last one.
+* <tt>:no_link</tt> - Specify which breadcrumb is does not have a link.  Default is to leave the current page unlinked. Set <tt>:no_link => "last"</tt> to leave the last breadcrumb unlinked instead.
 
 == Example
 
@@ -49,6 +49,7 @@ Changed breadcrumb method to accept 3 options: <tt>:tag</tt>,
   <%= breadcrumb %>
   <%= breadcrumb(:separator => '=>') %>
   <%= breadcrumb(:tag => 'li') %>
+  <%= breadcrumb(:no_link => 'last' %>
 
 == Acknowledgments
 
