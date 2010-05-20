@@ -34,10 +34,10 @@ module Breadcrumbs
       options = default_options.merge(args.extract_options!)
       @breadcrumbs.map do |name, url|
         if options[:no_link].to_s == 'last'
-          crumb = if [name, url] == @breadcrumbs.last
+          crumb = unless [name, url] == @breadcrumbs.last
             link_to( name, url)
           else
-            content_tag("span", crumb)
+            content_tag("span", name)
           end
         else
           crumb = link_to_unless_current(name, url)
